@@ -1,72 +1,111 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import '../model/validation.dart';
-import '../model/validator.dart';
+import 'package:forms_cubit/model/validation.dart';
 
 part 'forms_field_state.dart';
 
-abstract class FormsField<T> {
-  abstract T initialValue;
-
-  void setInitialValue(T value);
-
-  void updateValue(T value);
-}
-
-abstract class FormsFieldCubit<T> extends Cubit<FormsFieldState>
-    with FormsFieldCubitValidationMixin<T>
-    implements FormsField<T> {
-  FormsFieldCubit({
-    required this.initialValue,
-    this.validatorList = const [],
-  }) : super(FormsFieldValueInitialized<T>(
+abstract class FormsFieldCubitBase<T> extends Cubit<FormsFieldState<T>> {
+  FormsFieldCubitBase({
+    required T initialValue,
+    FormsFieldValidation<T>? validation,
+  })  : _initialValue = initialValue,
+        _value = initialValue,
+        _validation = validation ?? FormsFieldValidation(),
+        super(FormsFieldState<T>(
           value: initialValue,
           valueStatus: FormsFieldValueStatus.initial,
           validationStatus: FormsFieldValidationStatus.initial,
         ));
 
-  @override
-  T initialValue;
+  T _initialValue;
 
-  @override
-  List<FieldValidator<T>> validatorList;
+  T get initialValue => _initialValue;
 
-  @override
-  void setInitialValue(value) {
-    final state = this.state;
-    if (state is FormsFieldValuedState<T> &&
-        state.validationStatus == FormsFieldValidationStatus.validating) {
-      return;
-    }
+  T _value;
 
-    emit(FormsFieldValueChanged<T>(
-        value: value,
-        valueStatus: FormsFieldValueStatus.initial,
-        validationStatus: FormsFieldValidationStatus.initial));
+  T get value => _value;
+
+  final FormsFieldValidation<T> _validation;
+
+  /// Easy getter function for checking current state is validating
+  bool get isValidating =>
+      state.validationStatus == FormsFieldValidationStatus.validating;
+
+  bool checkIsInitialValue(T value) {
+    return initialValue == value;
   }
 
-  @override
-  void updateValue(T value) {
-    final state = this.state;
-    if (state is FormsFieldValuedState<T> &&
-        state.validationStatus == FormsFieldValidationStatus.validating) {
+  void updateInitialValue(T value) {
+    if (isValidating) {
       return;
     }
 
-    emit(FormsFieldValueChanged<T>(
-        value: value,
-        valueStatus: FormsFieldValueStatus.initial,
-        validationStatus: FormsFieldValidationStatus.initial));
+    _initialValue = value;
+  }
+
+  void updateValue(T value) {
+    if (isValidating) {
+      return;
+    }
+
+    _value = value;
+  }
+
+  FutureOr<bool> validate() async {
+    _validation.validate(_value);
+    return _validation.isValidate;
   }
 }
 
-abstract class FormsMultipleSelectionFieldCubit<T> extends FormsFieldCubit<T> {
-  FormsMultipleSelectionFieldCubit({
+abstract class SingleValueFormsFieldCubit<T> extends FormsFieldCubitBase<T> {
+  SingleValueFormsFieldCubit({
     required super.initialValue,
-    super.validatorList = const [],
-    this.itemList = const [],
+    super.validation,
+  });
+}
+
+abstract class MultipleValueFormsFieldCubit<T>
+    extends FormsFieldCubitBase<List<T>> {
+  MultipleValueFormsFieldCubit({
+    required super.initialValue,
+    super.validation,
+    required this.itemList,
   });
 
   final List<T> itemList;
+
+  void selectValue(T value) => selectValueList([value]);
+
+  void selectValueList(List<T> valueList) {
+    if (isValidating) {
+      return;
+    }
+
+    updateValue(value.toList()..addAll(valueList));
+  }
+
+  void unselectValue(T value) {
+    unselectValueList([value]);
+  }
+
+  void unselectValueList(List<T> valueList) {
+    if (isValidating) {
+      return;
+    }
+
+    updateValue(
+        value.toList()..removeWhere((element) => valueList.contains(element)));
+  }
+
+  void updateItemList(List<T> itemList) {
+    if (isValidating) {
+      return;
+    }
+
+    this.itemList
+      ..clear()
+      ..addAll(itemList);
+  }
 }

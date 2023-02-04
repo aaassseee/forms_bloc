@@ -1,3 +1,5 @@
+import 'dart:async';
+
 abstract class Validator {
   const Validator();
 }
@@ -7,7 +9,7 @@ abstract class FieldValidator<T> extends Validator {
 
   final Iterable<FieldValidatorTriggerType> triggerTypeList;
 
-  void validate(T value);
+  FutureOr validate(T value);
 }
 
 enum FieldValidatorTriggerType {

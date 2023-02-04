@@ -6,35 +6,35 @@ import 'forms_field_cubit.dart';
 part 'forms_form_state.dart';
 
 abstract class FormsForm {
-  Iterable<FormsFieldCubit> get fieldCubitList =>
+  Iterable<FormsFieldCubitBase> get fieldCubitList =>
       List.unmodifiable(_fieldCubitList);
 
-  final List<FormsFieldCubit> _fieldCubitList = [];
+  final List<FormsFieldCubitBase> _fieldCubitList = [];
 
-  void addFieldCubit(FormsFieldCubit fieldCubit) {
+  void addFieldCubit(FormsFieldCubitBase fieldCubit) {
     _fieldCubitList.add(fieldCubit);
   }
 
-  void addAllFieldCubit(Iterable<FormsFieldCubit> fieldCubitList) {
+  void addAllFieldCubit(Iterable<FormsFieldCubitBase> fieldCubitList) {
     _fieldCubitList.addAll(fieldCubitList);
   }
 
-  void removeFieldCubit(FormsFieldCubit fieldCubit) {
+  void removeFieldCubit(FormsFieldCubitBase fieldCubit) {
     _fieldCubitList.remove(fieldCubit);
   }
 
-  void removeAllFieldCubit(Iterable<FormsFieldCubit> fieldCubitList) {
+  void removeAllFieldCubit(Iterable<FormsFieldCubitBase> fieldCubitList) {
     for (final fieldCubit in fieldCubitList) {
       _fieldCubitList.remove(fieldCubit);
     }
   }
 
-  void insertFieldCubit(int index, FormsFieldCubit fieldCubit) {
+  void insertFieldCubit(int index, FormsFieldCubitBase fieldCubit) {
     _fieldCubitList.insert(index, fieldCubit);
   }
 
   void insertAllFieldCubit(
-      int index, Iterable<FormsFieldCubit> fieldCubitList) {
+      int index, Iterable<FormsFieldCubitBase> fieldCubitList) {
     _fieldCubitList.insertAll(index, fieldCubitList);
   }
 }
