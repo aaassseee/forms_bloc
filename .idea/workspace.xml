@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbeb7154-c288-4355-9d6d-c6c3201aa5c7" name="Changes" comment="refactor: separate validation out of field cubit">
-      <change afterPath="$PROJECT_DIR$/forms_cubit/forms_cubit.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/model/field_error.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_form_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/base/forms_form_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/model/validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/model/validation.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms_cubit/lib/model/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/model/validator.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms_cubit/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/test/forms_field_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -54,12 +52,37 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "vcs.Git",
     "show.migrate.to.gradle.popup": "false"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT",
+      "JSON"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/model" />
     </key>
+  </component>
+  <component name="RunManager" selected="Dart Test.forms field value in forms_field_cubit_test.dart">
+    <configuration name="Tests in forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" />
+      <option name="testName" value="forms_field_cubit_test.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="forms field value in forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" />
+      <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
+      <option name="testName" value="forms field value" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Test.forms field value in forms_field_cubit_test.dart" />
+        <item itemvalue="Dart Test.Tests in forms_field_cubit_test.dart" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665371668871</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactor: separate validation out of field cubit">
+      <created>1675504890007</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675504890007</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

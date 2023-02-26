@@ -33,29 +33,53 @@ abstract class FormsFieldCubitBase<T> extends Cubit<FormsFieldState<T>> {
   bool get isValidating =>
       state.validationStatus == FormsFieldValidationStatus.validating;
 
-  bool checkIsInitialValue(T value) {
-    return initialValue == value;
-  }
+  bool isInitialValue(T value) => _initialValue == value;
+
+  bool isValue(T value) => _value == value;
 
   void updateInitialValue(T value) {
-    if (isValidating) {
+    if (isValidating || isInitialValue(value)) {
       return;
     }
 
     _initialValue = value;
+
+    final valueStatus = isValue(_initialValue)
+        ? FormsFieldValueStatus.initial
+        : FormsFieldValueStatus.changed;
+    if (state.valueStatus == valueStatus) return;
+    emit(state.copyWith(valueStatus: valueStatus));
   }
 
   void updateValue(T value) {
-    if (isValidating) {
+    if (isValidating || isValue(value)) {
       return;
     }
 
     _value = value;
+
+    final valueStatus = isInitialValue(_value)
+        ? FormsFieldValueStatus.initial
+        : FormsFieldValueStatus.changed;
+    if (state.valueStatus == valueStatus) return;
+    emit(state.copyWith(valueStatus: valueStatus));
   }
 
   FutureOr<bool> validate() async {
-    _validation.validate(_value);
-    return _validation.isValidate;
+    if (isValidating) {
+      throw Error();
+    }
+
+    emit(state.copyWith(
+        validationStatus: FormsFieldValidationStatus.validating));
+    await _validation.validate(_value);
+
+    final isValid = _validation.isValidate;
+    emit(state.copyWith(
+        validationStatus: isValid
+            ? FormsFieldValidationStatus.pass
+            : FormsFieldValidationStatus.failed));
+    return isValid;
   }
 }
 
@@ -108,4 +132,11 @@ abstract class MultipleValueFormsFieldCubit<T>
       ..clear()
       ..addAll(itemList);
   }
+}
+
+class TextFormsFieldCubit extends SingleValueFormsFieldCubit<String> {
+  TextFormsFieldCubit({
+    required super.initialValue,
+    super.validation,
+  });
 }
