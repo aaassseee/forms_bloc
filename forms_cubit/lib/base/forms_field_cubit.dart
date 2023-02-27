@@ -10,22 +10,17 @@ abstract class FormsFieldCubitBase<T> extends Cubit<FormsFieldState<T>> {
   FormsFieldCubitBase({
     required T initialValue,
     FormsFieldValidation<T>? validation,
-  })  : _initialValue = initialValue,
-        _value = initialValue,
-        _validation = validation ?? FormsFieldValidation(),
+  })  : _validation = validation ?? FormsFieldValidation(),
         super(FormsFieldState<T>(
+          initialValue: initialValue,
           value: initialValue,
           valueStatus: FormsFieldValueStatus.initial,
           validationStatus: FormsFieldValidationStatus.initial,
         ));
 
-  T _initialValue;
+  T get initialValue => state.initialValue;
 
-  T get initialValue => _initialValue;
-
-  T _value;
-
-  T get value => _value;
+  T get value => state.value;
 
   final FormsFieldValidation<T> _validation;
 
@@ -33,22 +28,21 @@ abstract class FormsFieldCubitBase<T> extends Cubit<FormsFieldState<T>> {
   bool get isValidating =>
       state.validationStatus == FormsFieldValidationStatus.validating;
 
-  bool isInitialValue(T value) => _initialValue == value;
+  bool get isInitial => state.valueStatus == FormsFieldValueStatus.initial;
 
-  bool isValue(T value) => _value == value;
+  bool isInitialValue(T value) => initialValue == value;
 
-  void updateInitialValue(T value) {
-    if (isValidating || isInitialValue(value)) {
+  bool isValue(T value) => this.value == value;
+
+  void updateInitialValue(T initialValue) {
+    if (isValidating || isInitialValue(initialValue)) {
       return;
     }
 
-    _initialValue = value;
-
-    final valueStatus = isValue(_initialValue)
+    final valueStatus = isValue(initialValue)
         ? FormsFieldValueStatus.initial
         : FormsFieldValueStatus.changed;
-    if (state.valueStatus == valueStatus) return;
-    emit(state.copyWith(valueStatus: valueStatus));
+    emit(state.copyWith(initialValue: initialValue, valueStatus: valueStatus));
   }
 
   void updateValue(T value) {
@@ -56,13 +50,10 @@ abstract class FormsFieldCubitBase<T> extends Cubit<FormsFieldState<T>> {
       return;
     }
 
-    _value = value;
-
-    final valueStatus = isInitialValue(_value)
+    final valueStatus = isInitialValue(value)
         ? FormsFieldValueStatus.initial
         : FormsFieldValueStatus.changed;
-    if (state.valueStatus == valueStatus) return;
-    emit(state.copyWith(valueStatus: valueStatus));
+    emit(state.copyWith(value: value, valueStatus: valueStatus));
   }
 
   FutureOr<bool> validate() async {
@@ -72,7 +63,7 @@ abstract class FormsFieldCubitBase<T> extends Cubit<FormsFieldState<T>> {
 
     emit(state.copyWith(
         validationStatus: FormsFieldValidationStatus.validating));
-    await _validation.validate(_value);
+    await _validation.validate(value);
 
     final isValid = _validation.isValidate;
     emit(state.copyWith(

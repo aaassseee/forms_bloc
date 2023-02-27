@@ -14,10 +14,13 @@ enum FormsFieldValueStatus {
 
 class FormsFieldState<T> extends Equatable {
   const FormsFieldState({
+    required this.initialValue,
     required this.value,
     required this.valueStatus,
     required this.validationStatus,
   });
+
+  final T initialValue;
 
   final T value;
 
@@ -27,17 +30,20 @@ class FormsFieldState<T> extends Equatable {
 
   @override
   List<Object?> get props => [
+        initialValue,
         value,
         valueStatus,
         validationStatus,
       ];
 
   FormsFieldState<T> copyWith({
+    T? initialValue,
     T? value,
     FormsFieldValueStatus? valueStatus,
     FormsFieldValidationStatus? validationStatus,
   }) =>
       FormsFieldState<T>(
+        initialValue: initialValue ?? this.initialValue,
         value: value ?? this.value,
         valueStatus: valueStatus ?? this.valueStatus,
         validationStatus: validationStatus ?? this.validationStatus,

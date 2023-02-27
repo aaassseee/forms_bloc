@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbeb7154-c288-4355-9d6d-c6c3201aa5c7" name="Changes" comment="refactor: separate validation out of field cubit">
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/model/field_error.dart" afterDir="false" />
+    <list default="true" id="bbeb7154-c288-4355-9d6d-c6c3201aa5c7" name="Changes" comment="feat: forms field cubit emit state when changing value and validate&#10;&#10;emit state when change value and validate&#10;added test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/model/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/model/validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_state.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms_cubit/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" afterDir="false" />
     </list>
@@ -46,6 +45,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "dart.analysis.tool.window.visible": "false",
+    "deletionFromPopupRequiresConfirmation": "false",
     "last_opened_file_path": "E:/Project/forms_cubit/forms_cubit",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -71,6 +71,12 @@
       <option name="testName" value="forms_field_cubit_test.dart" />
       <method v="2" />
     </configuration>
+    <configuration name="forms field validation in forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" />
+      <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
+      <option name="testName" value="forms field validation" />
+      <method v="2" />
+    </configuration>
     <configuration name="forms field value in forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" />
       <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
@@ -81,6 +87,7 @@
       <list>
         <item itemvalue="Dart Test.forms field value in forms_field_cubit_test.dart" />
         <item itemvalue="Dart Test.Tests in forms_field_cubit_test.dart" />
+        <item itemvalue="Dart Test.forms field validation in forms_field_cubit_test.dart" />
       </list>
     </recent_temporary>
   </component>
