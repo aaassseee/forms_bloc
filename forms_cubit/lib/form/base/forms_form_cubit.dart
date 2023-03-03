@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'forms_field_cubit.dart';
+import '../../field/base/forms_field_cubit.dart';
 
 part 'forms_form_state.dart';
 
