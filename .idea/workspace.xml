@@ -4,35 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbeb7154-c288-4355-9d6d-c6c3201aa5c7" name="Changes" comment="feat: forms field cubit emit state when changing value and validate&#10;&#10;emit state when change value and validate&#10;added test">
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/field/base/forms_field_cubit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/field/base/forms_field_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/field/dropdown_forms_field_cubit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/field/model/field_exception.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/field/text_forms_field_cubit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/structure/base/forms_structure_cubit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/structure/base/forms_structure_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/lib/validation/validation.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/test/field/forms_field_cubit_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/test/field/text_forms_field_cubit_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/test/mock/error.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/test/mock/forms_field_cubit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/test/mock/validation.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/test/mock/validator.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms_cubit/test/validation/validator_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_cubit.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_field_state.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_form_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/form/base/forms_form_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/base/forms_form_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/form/base/forms_form_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/forms_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/forms_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/model/field_error.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/model/validation.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/lib/model/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/forms_cubit/lib/validation/validator.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms_cubit/test/forms_field_cubit_test.dart" beforeDir="false" />
-    </list>
+    <list default="true" id="bbeb7154-c288-4355-9d6d-c6c3201aa5c7" name="Changes" comment="refactor: change to domain structure, add test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +18,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
@@ -85,38 +63,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "last_opened_file_path": "E:/Project/forms_cubit/forms_cubit",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "trusted.hosts",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Project/forms_cubit/forms_cubit&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TEXT",
-      "JSON"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;,
+      &quot;JSON&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/forms_cubit/test/field/validation" />
+      <recent name="$PROJECT_DIR$/forms_cubit/test/field/base" />
+      <recent name="$PROJECT_DIR$/forms_cubit/lib/field/validation" />
       <recent name="$PROJECT_DIR$/forms_cubit/test/field" />
       <recent name="$PROJECT_DIR$/forms_cubit/test/mock" />
-      <recent name="$PROJECT_DIR$/forms_cubit/lib/structure/base" />
-      <recent name="$PROJECT_DIR$/forms_cubit/lib/form/base" />
-      <recent name="$PROJECT_DIR$/forms_cubit/lib/form" />
     </key>
   </component>
-  <component name="RunManager" selected="Dart Test.text forms field cubit in text_forms_field_cubit_test.dart">
+  <component name="RunManager" selected="Shell Script.generate forms_cubit coverage report">
     <configuration name="Tests in forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/field/forms_field_cubit_test.dart" />
+      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/field/base/forms_field_cubit_test.dart" />
       <option name="testName" value="forms_field_cubit_test.dart" />
       <method v="2" />
     </configuration>
@@ -125,15 +103,16 @@
       <option name="testName" value="text_forms_field_cubit_test.dart" />
       <method v="2" />
     </configuration>
-    <configuration name="Tests in validator_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/validation/validator_test.dart" />
-      <option name="testName" value="validator_test.dart" />
+    <configuration name="forms field validation failure with validate during validating in forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/field/base/forms_field_cubit_test.dart" />
+      <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
+      <option name="testName" value="forms field validation failure with validate during validating" />
       <method v="2" />
     </configuration>
-    <configuration name="required forms field validator in validator_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/validation/validator_test.dart" />
+    <configuration name="forms field validation pass in forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/forms_cubit/test/field/base/forms_field_cubit_test.dart" />
       <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
-      <option name="testName" value="required forms field validator" />
+      <option name="testName" value="forms field validation pass" />
       <method v="2" />
     </configuration>
     <configuration name="text forms field cubit in text_forms_field_cubit_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
@@ -142,28 +121,22 @@
       <option name="testName" value="text forms field cubit" />
       <method v="2" />
     </configuration>
-    <configuration name="tests in forms_cubit" type="FlutterTestConfigType" factoryName="Flutter Test">
-      <option name="testDir" value="$PROJECT_DIR$/forms_cubit/test/" />
-      <option name="useRegexp" value="false" />
-      <option name="additionalArgs" value="--coverage" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Dart Test.Tests in forms_field_cubit_test.dart" />
       <item itemvalue="Dart Test.Tests in text_forms_field_cubit_test.dart" />
-      <item itemvalue="Dart Test.Tests in validator_test.dart" />
-      <item itemvalue="Dart Test.required forms field validator in validator_test.dart" />
+      <item itemvalue="Dart Test.forms field validation failure with validate during validating in forms_field_cubit_test.dart" />
+      <item itemvalue="Dart Test.forms field validation pass in forms_field_cubit_test.dart" />
       <item itemvalue="Dart Test.text forms field cubit in text_forms_field_cubit_test.dart" />
+      <item itemvalue="Shell Script.generate forms_cubit coverage report" />
       <item itemvalue="Flutter Test.tests in forms_cubit" />
-      <item itemvalue="Shell Script.test forms_cubit with coverage report" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Dart Test.Tests in forms_field_cubit_test.dart" />
+        <item itemvalue="Dart Test.forms field validation pass in forms_field_cubit_test.dart" />
+        <item itemvalue="Dart Test.forms field validation failure with validate during validating in forms_field_cubit_test.dart" />
         <item itemvalue="Dart Test.text forms field cubit in text_forms_field_cubit_test.dart" />
         <item itemvalue="Dart Test.Tests in text_forms_field_cubit_test.dart" />
-        <item itemvalue="Dart Test.Tests in forms_field_cubit_test.dart" />
-        <item itemvalue="Dart Test.required forms field validator in validator_test.dart" />
-        <item itemvalue="Dart Test.Tests in validator_test.dart" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675504890007</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor: change to domain structure, add test">
+      <created>1677837491654</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677837491654</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -207,7 +187,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="chore: initial commit" />
     <MESSAGE value="refactor: separate validation out of field cubit" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: separate validation out of field cubit" />
+    <MESSAGE value="refactor: change to domain structure, add test" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: change to domain structure, add test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

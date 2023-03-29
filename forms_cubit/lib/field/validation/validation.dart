@@ -1,6 +1,8 @@
 import 'dart:async';
 
-import 'validator.dart';
+import '../model/field_exception.dart';
+
+part 'validator.dart';
 
 class FormsFieldValidation<T> {
   FormsFieldValidation({List<FormsFieldValidator<T>> validatorList = const []})
@@ -10,23 +12,15 @@ class FormsFieldValidation<T> {
 
   List<FormsFieldValidator<T>> get validatorList => _validatorList;
 
-  bool get isValidate => _error != null;
+  bool get isValid => validatorList.every(
+      (validator) => validator.hasValidate && validator.exception == null);
 
-  dynamic _error;
-
-  dynamic get error => _error;
-
-  FutureOr validate(T value) async {
-    try {
-      for (final validator in _validatorList) {
-        await validator.validate(value);
-      }
-      _error = null;
-    } catch (error) {
-      _error = error;
-      return;
-    }
-  }
+  Iterable<FormsFieldException> get errorList =>
+      validatorList.fold<List<FormsFieldException>>([], (list, validator) {
+        final exception = validator.exception;
+        if (exception == null) return list;
+        return list..add(exception);
+      });
 
   void addValidator(FormsFieldValidator<T> validator) {
     _validatorList.add(validator);
@@ -45,7 +39,7 @@ class FormsFieldValidation<T> {
     _validatorList.insertAll(index, validatorList);
   }
 
-  void updateValidator(Iterable<FormsFieldValidator<T>> validatorList) {
+  void updateValidatorList(Iterable<FormsFieldValidator<T>> validatorList) {
     _validatorList
       ..clear()
       ..addAll(validatorList);
@@ -53,5 +47,18 @@ class FormsFieldValidation<T> {
 
   void removeValidator(FormsFieldValidator<T> validator) {
     _validatorList.remove(validator);
+  }
+
+  FutureOr<void> validate(T value,
+      {FormsFieldValidatorTriggerType? triggerType}) async {
+    for (final validator in _validatorList) {
+      if (triggerType != null &&
+          !validator.triggerTypeList.contains(triggerType)) continue;
+      await validator.validate(value);
+    }
+  }
+
+  void reset() {
+    _validatorList.forEach((validator) => validator.reset());
   }
 }

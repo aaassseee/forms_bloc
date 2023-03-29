@@ -47,15 +47,15 @@ enum FormsFieldValidationStatus {
 
 class FormsFieldValidationState extends Equatable {
   const FormsFieldValidationState({
-    this.error,
+    this.error = const [],
     required this.status,
   });
 
-  final dynamic error;
+  final Iterable<FormsFieldException> error;
 
   final FormsFieldValidationStatus status;
 
-  bool get isValid => error == null;
+  bool get isValid => error.isEmpty;
 
   @override
   List<Object?> get props => [
@@ -64,7 +64,7 @@ class FormsFieldValidationState extends Equatable {
       ];
 
   FormsFieldValidationState copyWith({
-    dynamic error,
+    Iterable<FormsFieldException>? error,
     FormsFieldValidationStatus? status,
   }) =>
       FormsFieldValidationState(
@@ -94,6 +94,50 @@ class FormsFieldState<T> extends Equatable {
     FormsFieldValidationState? validationState,
   }) =>
       FormsFieldState<T>(
+        valueState: valueState ?? this.valueState,
+        validationState: validationState ?? this.validationState,
+      );
+}
+
+class FormsFieldItemState<T> extends Equatable {
+  const FormsFieldItemState({
+    required this.itemList,
+  });
+
+  final List<T> itemList;
+
+  @override
+  List<Object?> get props => [
+        itemList,
+      ];
+
+  FormsFieldItemState<T> copyWith({List<T>? itemList}) =>
+      FormsFieldItemState(itemList: itemList ?? this.itemList);
+}
+
+class FormsSelectionFieldState<T> extends FormsFieldState<T> {
+  const FormsSelectionFieldState({
+    required super.valueState,
+    required this.itemState,
+    required super.validationState,
+  });
+
+  final FormsFieldItemState<T> itemState;
+
+  @override
+  List<Object?> get props => [
+        valueState,
+        itemState,
+        validationState,
+      ];
+
+  FormsSelectionFieldState<T> copyWith({
+    FormsFieldValueState<T>? valueState,
+    FormsFieldItemState<T>? itemState,
+    FormsFieldValidationState? validationState,
+  }) =>
+      FormsSelectionFieldState<T>(
+        itemState: itemState ?? this.itemState,
         valueState: valueState ?? this.valueState,
         validationState: validationState ?? this.validationState,
       );

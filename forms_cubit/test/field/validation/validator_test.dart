@@ -5,6 +5,13 @@ void main() {
   group(
     'required forms field validator',
     () {
+      test('required forms field validator initial', () {
+        final validator =
+            FormsFieldRequiredValidator<Object?>(triggerTypeList: []);
+        expect(validator.hasValidate, false);
+        expect(validator.exception, null);
+      });
+
       group(
         'required forms field validator validate with success',
         () {
@@ -13,9 +20,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<Object?>(triggerTypeList: []);
-
-              expect(Future(() => validator.validate(Object())),
-                  completion(isNull));
+              await validator.validate(Object());
+              expect(validator.exception, isNull);
             },
           );
 
@@ -24,9 +30,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<bool>(triggerTypeList: []);
-
-              expect(
-                  Future(() => validator.validate(true)), completion(isNull));
+              await validator.validate(true);
+              expect(validator.exception, isNull);
             },
           );
 
@@ -36,8 +41,8 @@ void main() {
               final validator =
                   FormsFieldRequiredValidator<Iterable>(triggerTypeList: []);
 
-              expect(Future(() => validator.validate([Object()])),
-                  completion(isNull));
+              await validator.validate([Object()]);
+              expect(validator.exception, isNull);
             },
           );
 
@@ -46,9 +51,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<String>(triggerTypeList: []);
-
-              expect(
-                  Future(() => validator.validate('test')), completion(isNull));
+              await validator.validate('test');
+              expect(validator.exception, isNull);
             },
           );
 
@@ -57,9 +61,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<Map>(triggerTypeList: []);
-
-              expect(Future(() => validator.validate({Object(): Object()})),
-                  completion(isNull));
+              await validator.validate({Object(): Object()});
+              expect(validator.exception, isNull);
             },
           );
         },
@@ -73,9 +76,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<Object?>(triggerTypeList: []);
-
-              expect(Future(() => validator.validate(null)),
-                  throwsA(isA<FormsFieldRequiredException>()));
+              await validator.validate(null);
+              expect(validator.exception, isA<FormsFieldRequiredException>());
             },
           );
 
@@ -84,9 +86,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<bool>(triggerTypeList: []);
-
-              expect(Future(() => validator.validate(false)),
-                  throwsA(isA<FormsFieldRequiredException>()));
+              await validator.validate(false);
+              expect(validator.exception, isA<FormsFieldRequiredException>());
             },
           );
 
@@ -95,9 +96,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<Iterable>(triggerTypeList: []);
-
-              expect(Future(() => validator.validate([])),
-                  throwsA(isA<FormsFieldRequiredException>()));
+              await validator.validate([]);
+              expect(validator.exception, isA<FormsFieldRequiredException>());
             },
           );
 
@@ -106,9 +106,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<String>(triggerTypeList: []);
-
-              expect(Future(() => validator.validate('')),
-                  throwsA(isA<FormsFieldRequiredException>()));
+              await validator.validate('');
+              expect(validator.exception, isA<FormsFieldRequiredException>());
             },
           );
 
@@ -117,9 +116,8 @@ void main() {
             () async {
               final validator =
                   FormsFieldRequiredValidator<Map>(triggerTypeList: []);
-
-              expect(Future(() => validator.validate({})),
-                  throwsA(isA<FormsFieldRequiredException>()));
+              await validator.validate({});
+              expect(validator.exception, isA<FormsFieldRequiredException>());
             },
           );
         },
