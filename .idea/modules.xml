@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/forms_cubit/forms_cubit.iml" filepath="$PROJECT_DIR$/forms_cubit/forms_cubit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/forms_bloc/forms_bloc.iml" filepath="$PROJECT_DIR$/forms_bloc/forms_bloc.iml" />
     </modules>
   </component>
 </project>

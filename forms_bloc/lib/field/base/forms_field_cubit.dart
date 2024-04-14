@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../forms_cubit.dart';
+import '../../forms_bloc.dart';
 
 part 'forms_field_state.dart';
 

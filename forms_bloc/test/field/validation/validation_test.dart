@@ -1,4 +1,4 @@
-import 'package:forms_cubit/forms_cubit.dart';
+import 'package:forms_cubit/forms_bloc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 

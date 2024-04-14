@@ -1,4 +1,4 @@
-import '../forms_cubit.dart';
+import '../forms_bloc.dart';
 
 class TextFormsFieldCubit extends FormsFieldCubit<String> {
   TextFormsFieldCubit({
