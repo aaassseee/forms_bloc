@@ -34,7 +34,7 @@ void main() {
         ])),
     act: (bloc) => bloc.selectValue('a'),
     expect: () => [
-      FormsSelectionFieldState<String>(
+      const FormsSelectionFieldState<String>(
         itemState:
             FormsFieldItemState(itemList: ['', 'a', 'b', 'c', 'd', 'e', 'f']),
         valueState: FormsFieldValueState<String>(value: 'a', initialValue: ''),
@@ -42,14 +42,14 @@ void main() {
             status: FormsFieldValidationStatus.initial),
       ),
       // state changed from auto validation trigger
-      FormsSelectionFieldState<String>(
+      const FormsSelectionFieldState<String>(
         itemState:
             FormsFieldItemState(itemList: ['', 'a', 'b', 'c', 'd', 'e', 'f']),
         valueState: FormsFieldValueState<String>(value: 'a', initialValue: ''),
         validationState: FormsFieldValidationState(
             status: FormsFieldValidationStatus.validating),
       ),
-      FormsSelectionFieldState<String>(
+      const FormsSelectionFieldState<String>(
         itemState:
             FormsFieldItemState(itemList: ['', 'a', 'b', 'c', 'd', 'e', 'f']),
         valueState: FormsFieldValueState<String>(value: 'a', initialValue: ''),
@@ -77,7 +77,7 @@ void main() {
         ])),
     act: (bloc) => bloc.addItem('g'),
     expect: () => [
-      FormsSelectionFieldState<String>(
+      const FormsSelectionFieldState<String>(
         itemState: FormsFieldItemState(
             itemList: ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g']),
         valueState: FormsFieldValueState<String>(value: '', initialValue: ''),

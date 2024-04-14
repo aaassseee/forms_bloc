@@ -12,7 +12,7 @@ void main() {
       setUp(() {
         when(mockValidator.hasValidate).thenReturn(true);
         when(mockValidator.exception).thenReturn(null);
-        when(mockValidator.validate(any)).thenAnswer((_) => null);
+        when(mockValidator.validate(any));
       });
 
       tearDown(() {

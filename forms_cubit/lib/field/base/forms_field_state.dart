@@ -57,6 +57,8 @@ class FormsFieldValidationState extends Equatable {
 
   bool get isValid => error.isEmpty;
 
+  bool get isValidating => status == FormsFieldValidationStatus.validating;
+
   @override
   List<Object?> get props => [
         error,
@@ -131,6 +133,7 @@ class FormsSelectionFieldState<T> extends FormsFieldState<T> {
         validationState,
       ];
 
+  @override
   FormsSelectionFieldState<T> copyWith({
     FormsFieldValueState<T>? valueState,
     FormsFieldItemState<T>? itemState,

@@ -4,13 +4,15 @@ import 'package:test/test.dart';
 void main() {
   test('exception FormsFieldRequiredException', () {
     expect(
-        FormsFieldRequiredException() == FormsFieldRequiredException(), isTrue);
+        const FormsFieldRequiredException() ==
+            const FormsFieldRequiredException(),
+        isTrue);
   });
 
   test('exception FormsSelectionFieldNotInItemListException', () {
     expect(
-        FormsSelectionFieldNotInItemListException() ==
-            FormsSelectionFieldNotInItemListException(),
+        const FormsSelectionFieldNotInItemListException() ==
+            const FormsSelectionFieldNotInItemListException(),
         isTrue);
   });
 }

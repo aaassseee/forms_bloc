@@ -16,6 +16,8 @@ class FormsFieldRequiredException extends FormsFieldValidationException {
 }
 
 class FormsSelectionFieldNotInItemListException extends FormsFieldException {
+  const FormsSelectionFieldNotInItemListException();
+
   @override
   List<Object?> get props => [];
 }

@@ -30,20 +30,20 @@ void main() {
         ])),
     act: (bloc) => bloc.updateValue('test'),
     expect: () => [
-      FormsFieldState(
+      const FormsFieldState(
         valueState:
             FormsFieldValueState<String>(value: 'test', initialValue: ''),
         validationState: FormsFieldValidationState(
             status: FormsFieldValidationStatus.initial),
       ),
       // state changed from auto validation trigger
-      FormsFieldState(
+      const FormsFieldState(
         valueState:
             FormsFieldValueState<String>(value: 'test', initialValue: ''),
         validationState: FormsFieldValidationState(
             status: FormsFieldValidationStatus.validating),
       ),
-      FormsFieldState(
+      const FormsFieldState(
         valueState:
             FormsFieldValueState<String>(value: 'test', initialValue: ''),
         validationState: FormsFieldValidationState(

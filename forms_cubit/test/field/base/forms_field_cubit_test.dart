@@ -14,8 +14,9 @@ void main() {
     group('forms field value', () {
       blocTest<SampleFormsFieldCubit, FormsFieldState<SampleObject>>(
         'forms field value from initial to changed by update value',
-        build: () => SampleFormsFieldCubit(initialValue: SampleObject('')),
-        act: (bloc) => bloc.updateValue(SampleObject('test')),
+        build: () =>
+            SampleFormsFieldCubit(initialValue: const SampleObject('')),
+        act: (bloc) => bloc.updateValue(const SampleObject('test')),
         expect: () => const [
           FormsFieldState<SampleObject>(
             valueState: FormsFieldValueState(
@@ -34,8 +35,9 @@ void main() {
 
       blocTest<SampleFormsFieldCubit, FormsFieldState<SampleObject>>(
         'forms field value from initial to changed by update initial value',
-        build: () => SampleFormsFieldCubit(initialValue: SampleObject('')),
-        act: (bloc) => bloc.updateInitialValue(SampleObject('test')),
+        build: () =>
+            SampleFormsFieldCubit(initialValue: const SampleObject('')),
+        act: (bloc) => bloc.updateInitialValue(const SampleObject('test')),
         expect: () => const [
           FormsFieldState<SampleObject>(
             valueState: FormsFieldValueState(
@@ -54,8 +56,9 @@ void main() {
 
       blocTest<SampleFormsFieldCubit, FormsFieldState<SampleObject>>(
         'forms field value status from changed to initial by update value',
-        build: () => SampleFormsFieldCubit(initialValue: SampleObject('test')),
-        seed: () => FormsFieldState<SampleObject>(
+        build: () =>
+            SampleFormsFieldCubit(initialValue: const SampleObject('test')),
+        seed: () => const FormsFieldState<SampleObject>(
           valueState: FormsFieldValueState(
             initialValue: SampleObject('test'),
             value: SampleObject(''),
@@ -63,7 +66,7 @@ void main() {
           validationState: FormsFieldValidationState(
               status: FormsFieldValidationStatus.initial),
         ),
-        act: (bloc) => bloc.updateValue(SampleObject('test')),
+        act: (bloc) => bloc.updateValue(const SampleObject('test')),
         expect: () => const [
           FormsFieldState<SampleObject>(
             valueState: FormsFieldValueState(
@@ -82,8 +85,9 @@ void main() {
 
       blocTest<SampleFormsFieldCubit, FormsFieldState<SampleObject>>(
         'forms field value status from changed to initial by update initial value',
-        build: () => SampleFormsFieldCubit(initialValue: SampleObject('test')),
-        seed: () => FormsFieldState<SampleObject>(
+        build: () =>
+            SampleFormsFieldCubit(initialValue: const SampleObject('test')),
+        seed: () => const FormsFieldState<SampleObject>(
           valueState: FormsFieldValueState(
             initialValue: SampleObject('test'),
             value: SampleObject(''),
@@ -91,7 +95,7 @@ void main() {
           validationState: FormsFieldValidationState(
               status: FormsFieldValidationStatus.initial),
         ),
-        act: (bloc) => bloc.updateInitialValue(SampleObject('')),
+        act: (bloc) => bloc.updateInitialValue(const SampleObject('')),
         expect: () => const [
           FormsFieldState<SampleObject>(
             valueState: FormsFieldValueState(
@@ -124,7 +128,8 @@ void main() {
 
         blocTest<SampleFormsFieldCubit, FormsFieldState<SampleObject>>(
           'forms field validation pass with initial value and no validation',
-          build: () => SampleFormsFieldCubit(initialValue: SampleObject('')),
+          build: () =>
+              SampleFormsFieldCubit(initialValue: const SampleObject('')),
           act: (bloc) => bloc.validate(),
           expect: () => const [
             FormsFieldState<SampleObject>(
@@ -158,10 +163,11 @@ void main() {
             when(mockValidation.validate(any)).thenAnswer((_) => null);
           },
           build: () => SampleFormsFieldCubit(
-              initialValue: SampleObject('test'), validation: mockValidation),
+              initialValue: const SampleObject('test'),
+              validation: mockValidation),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsFieldState<SampleObject>(
+            const FormsFieldState<SampleObject>(
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
@@ -169,7 +175,7 @@ void main() {
               validationState: FormsFieldValidationState(
                   status: FormsFieldValidationStatus.validating),
             ),
-            FormsFieldState<SampleObject>(
+            const FormsFieldState<SampleObject>(
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
@@ -190,14 +196,15 @@ void main() {
         blocTest<SampleFormsFieldCubit, FormsFieldState<SampleObject>>(
           'forms field validation pass with initial value and mock async validation',
           setUp: () => when(mockValidation.validate(any)).thenAnswer(
-              (_) async => await Future.delayed(Duration(milliseconds: 250))),
+              (_) async =>
+                  await Future.delayed(const Duration(milliseconds: 250))),
           build: () => SampleFormsFieldCubit(
-            initialValue: SampleObject('test'),
+            initialValue: const SampleObject('test'),
             validation: mockValidation,
           ),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsFieldState<SampleObject>(
+            const FormsFieldState<SampleObject>(
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
@@ -205,7 +212,7 @@ void main() {
               validationState: FormsFieldValidationState(
                   status: FormsFieldValidationStatus.validating),
             ),
-            FormsFieldState<SampleObject>(
+            const FormsFieldState<SampleObject>(
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
@@ -240,12 +247,12 @@ void main() {
           setUp: () =>
               when(mockValidation.validate(any)).thenAnswer((_) => null),
           build: () => SampleFormsFieldCubit(
-            initialValue: SampleObject('test'),
+            initialValue: const SampleObject('test'),
             validation: mockValidation,
           ),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsFieldState<SampleObject>(
+            const FormsFieldState<SampleObject>(
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
@@ -254,7 +261,7 @@ void main() {
                   status: FormsFieldValidationStatus.validating),
             ),
             FormsFieldState<SampleObject>(
-              valueState: FormsFieldValueState(
+              valueState: const FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
               ),
@@ -275,14 +282,15 @@ void main() {
         blocTest<SampleFormsFieldCubit, FormsFieldState<SampleObject>>(
           'forms field validation failure with initial value and mock failure async validation',
           setUp: () => when(mockValidation.validate(any)).thenAnswer(
-              (_) async => await Future.delayed(Duration(milliseconds: 250))),
+              (_) async =>
+                  await Future.delayed(const Duration(milliseconds: 250))),
           build: () => SampleFormsFieldCubit(
-            initialValue: SampleObject('test'),
+            initialValue: const SampleObject('test'),
             validation: mockValidation,
           ),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsFieldState<SampleObject>(
+            const FormsFieldState<SampleObject>(
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
@@ -291,7 +299,7 @@ void main() {
                   status: FormsFieldValidationStatus.validating),
             ),
             FormsFieldState<SampleObject>(
-              valueState: FormsFieldValueState(
+              valueState: const FormsFieldValueState(
                 initialValue: SampleObject('test'),
                 value: SampleObject('test'),
               ),
@@ -318,14 +326,14 @@ void main() {
           FormsSelectionFieldState<SampleObject>>(
         'forms single selection field value from initial to changed by update value',
         build: () => SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('')),
-        act: (bloc) => bloc.selectValue(SampleObject('a')),
+            initialValue: const SampleObject('')),
+        act: (bloc) => bloc.selectValue(const SampleObject('a')),
         expect: () => const [
           FormsSelectionFieldState<SampleObject>(
             itemState: FormsFieldItemState(itemList: [
-              const SampleObject(''),
-              const SampleObject('a'),
-              const SampleObject('b'),
+              SampleObject(''),
+              SampleObject('a'),
+              SampleObject('b'),
             ]),
             valueState: FormsFieldValueState(
               initialValue: SampleObject(''),
@@ -345,14 +353,14 @@ void main() {
           FormsSelectionFieldState<SampleObject>>(
         'forms single selection field value from initial to changed by update initial value',
         build: () => SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('')),
-        act: (bloc) => bloc.updateInitialValue(SampleObject('a')),
+            initialValue: const SampleObject('')),
+        act: (bloc) => bloc.updateInitialValue(const SampleObject('a')),
         expect: () => const [
           FormsSelectionFieldState<SampleObject>(
             itemState: FormsFieldItemState(itemList: [
-              const SampleObject(''),
-              const SampleObject('a'),
-              const SampleObject('b'),
+              SampleObject(''),
+              SampleObject('a'),
+              SampleObject('b'),
             ]),
             valueState: FormsFieldValueState(
               initialValue: SampleObject('a'),
@@ -372,12 +380,12 @@ void main() {
           FormsSelectionFieldState<SampleObject>>(
         'forms single selection field value status from changed to initial by update value',
         build: () => SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('test')),
-        seed: () => FormsSelectionFieldState<SampleObject>(
+            initialValue: const SampleObject('test')),
+        seed: () => const FormsSelectionFieldState<SampleObject>(
           itemState: FormsFieldItemState(itemList: [
-            const SampleObject(''),
-            const SampleObject('a'),
-            const SampleObject('b'),
+            SampleObject(''),
+            SampleObject('a'),
+            SampleObject('b'),
           ]),
           valueState: FormsFieldValueState(
             initialValue: SampleObject('a'),
@@ -386,13 +394,13 @@ void main() {
           validationState: FormsFieldValidationState(
               status: FormsFieldValidationStatus.initial),
         ),
-        act: (bloc) => bloc.selectValue(SampleObject('a')),
+        act: (bloc) => bloc.selectValue(const SampleObject('a')),
         expect: () => const [
           FormsSelectionFieldState<SampleObject>(
             itemState: FormsFieldItemState(itemList: [
-              const SampleObject(''),
-              const SampleObject('a'),
-              const SampleObject('b'),
+              SampleObject(''),
+              SampleObject('a'),
+              SampleObject('b'),
             ]),
             valueState: FormsFieldValueState(
               initialValue: SampleObject('a'),
@@ -412,12 +420,12 @@ void main() {
           FormsSelectionFieldState<SampleObject>>(
         'forms single selection field value status from changed to initial by update initial value',
         build: () => SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('a')),
-        seed: () => FormsSelectionFieldState<SampleObject>(
+            initialValue: const SampleObject('a')),
+        seed: () => const FormsSelectionFieldState<SampleObject>(
           itemState: FormsFieldItemState(itemList: [
-            const SampleObject(''),
-            const SampleObject('a'),
-            const SampleObject('b'),
+            SampleObject(''),
+            SampleObject('a'),
+            SampleObject('b'),
           ]),
           valueState: FormsFieldValueState(
             initialValue: SampleObject('a'),
@@ -426,13 +434,13 @@ void main() {
           validationState: FormsFieldValidationState(
               status: FormsFieldValidationStatus.initial),
         ),
-        act: (bloc) => bloc.updateInitialValue(SampleObject('')),
+        act: (bloc) => bloc.updateInitialValue(const SampleObject('')),
         expect: () => const [
           FormsSelectionFieldState<SampleObject>(
             itemState: FormsFieldItemState(itemList: [
-              const SampleObject(''),
-              const SampleObject('a'),
-              const SampleObject('b'),
+              SampleObject(''),
+              SampleObject('a'),
+              SampleObject('b'),
             ]),
             valueState: FormsFieldValueState(
               initialValue: SampleObject(''),
@@ -450,8 +458,8 @@ void main() {
 
       test('forms single selection field select not in item value', () {
         final bloc = SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('a'));
-        expect(() => bloc.selectValue(SampleObject('c')),
+            initialValue: const SampleObject('a'));
+        expect(() => bloc.selectValue(const SampleObject('c')),
             throwsA(isA<FormsSelectionFieldNotInItemListException>()));
       });
     });
@@ -473,14 +481,14 @@ void main() {
             FormsSelectionFieldState<SampleObject>>(
           'forms single selection field validation pass with initial value and no validation',
           build: () => SampleFormsSingleSelectionFieldCubit(
-              initialValue: SampleObject('')),
+              initialValue: const SampleObject('')),
           act: (bloc) => bloc.validate(),
           expect: () => const [
             FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject(''),
@@ -491,9 +499,9 @@ void main() {
             ),
             FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject(''),
@@ -518,14 +526,15 @@ void main() {
             when(mockValidation.validate(any)).thenAnswer((_) => null);
           },
           build: () => SampleFormsSingleSelectionFieldCubit(
-              initialValue: SampleObject('a'), validation: mockValidation),
+              initialValue: const SampleObject('a'),
+              validation: mockValidation),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsSelectionFieldState<SampleObject>(
+            const FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('a'),
@@ -534,11 +543,11 @@ void main() {
               validationState: FormsFieldValidationState(
                   status: FormsFieldValidationStatus.validating),
             ),
-            FormsSelectionFieldState<SampleObject>(
+            const FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('a'),
@@ -561,18 +570,19 @@ void main() {
             FormsSelectionFieldState<SampleObject>>(
           'forms single selection field validation pass with initial value and mock async validation',
           setUp: () => when(mockValidation.validate(any)).thenAnswer(
-              (_) async => await Future.delayed(Duration(milliseconds: 250))),
+              (_) async =>
+                  await Future.delayed(const Duration(milliseconds: 250))),
           build: () => SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('a'),
+            initialValue: const SampleObject('a'),
             validation: mockValidation,
           ),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsSelectionFieldState<SampleObject>(
+            const FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('a'),
@@ -581,11 +591,11 @@ void main() {
               validationState: FormsFieldValidationState(
                   status: FormsFieldValidationStatus.validating),
             ),
-            FormsSelectionFieldState<SampleObject>(
+            const FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('a'),
@@ -622,16 +632,16 @@ void main() {
           setUp: () =>
               when(mockValidation.validate(any)).thenAnswer((_) => null),
           build: () => SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('a'),
+            initialValue: const SampleObject('a'),
             validation: mockValidation,
           ),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsSelectionFieldState<SampleObject>(
+            const FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('a'),
@@ -641,12 +651,12 @@ void main() {
                   status: FormsFieldValidationStatus.validating),
             ),
             FormsSelectionFieldState<SampleObject>(
-              itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+              itemState: const FormsFieldItemState(itemList: [
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
-              valueState: FormsFieldValueState(
+              valueState: const FormsFieldValueState(
                 initialValue: SampleObject('a'),
                 value: SampleObject('a'),
               ),
@@ -668,18 +678,19 @@ void main() {
             FormsSelectionFieldState<SampleObject>>(
           'forms single selection field validation failure with initial value and mock failure async validation',
           setUp: () => when(mockValidation.validate(any)).thenAnswer(
-              (_) async => await Future.delayed(Duration(milliseconds: 250))),
+              (_) async =>
+                  await Future.delayed(const Duration(milliseconds: 250))),
           build: () => SampleFormsSingleSelectionFieldCubit(
-            initialValue: SampleObject('a'),
+            initialValue: const SampleObject('a'),
             validation: mockValidation,
           ),
           act: (bloc) => bloc.validate(),
           expect: () => [
-            FormsSelectionFieldState<SampleObject>(
+            const FormsSelectionFieldState<SampleObject>(
               itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
               valueState: FormsFieldValueState(
                 initialValue: SampleObject('a'),
@@ -689,12 +700,12 @@ void main() {
                   status: FormsFieldValidationStatus.validating),
             ),
             FormsSelectionFieldState<SampleObject>(
-              itemState: FormsFieldItemState(itemList: [
-                const SampleObject(''),
-                const SampleObject('a'),
-                const SampleObject('b'),
+              itemState: const FormsFieldItemState(itemList: [
+                SampleObject(''),
+                SampleObject('a'),
+                SampleObject('b'),
               ]),
-              valueState: FormsFieldValueState(
+              valueState: const FormsFieldValueState(
                 initialValue: SampleObject('a'),
                 value: SampleObject('a'),
               ),
@@ -719,16 +730,16 @@ void main() {
           FormsSelectionFieldState<SampleObject>>(
         'forms single selection field item add item',
         build: () => SampleFormsSingleSelectionFieldCubit(
-          initialValue: SampleObject(''),
+          initialValue: const SampleObject(''),
         ),
-        act: (bloc) => bloc.addItem(SampleObject('c')),
+        act: (bloc) => bloc.addItem(const SampleObject('c')),
         expect: () => [
-          FormsSelectionFieldState<SampleObject>(
+          const FormsSelectionFieldState<SampleObject>(
             itemState: FormsFieldItemState(itemList: [
-              const SampleObject(''),
-              const SampleObject('a'),
-              const SampleObject('b'),
-              const SampleObject('c'),
+              SampleObject(''),
+              SampleObject('a'),
+              SampleObject('b'),
+              SampleObject('c'),
             ]),
             valueState: FormsFieldValueState(
               initialValue: SampleObject(''),
@@ -745,14 +756,14 @@ void main() {
           FormsSelectionFieldState<SampleObject>>(
         'forms single selection field item remove item',
         build: () => SampleFormsSingleSelectionFieldCubit(
-          initialValue: SampleObject(''),
+          initialValue: const SampleObject(''),
         ),
-        act: (bloc) => bloc.removeItem(SampleObject('b')),
+        act: (bloc) => bloc.removeItem(const SampleObject('b')),
         expect: () => [
-          FormsSelectionFieldState<SampleObject>(
+          const FormsSelectionFieldState<SampleObject>(
             itemState: FormsFieldItemState(itemList: [
-              const SampleObject(''),
-              const SampleObject('a'),
+              SampleObject(''),
+              SampleObject('a'),
             ]),
             valueState: FormsFieldValueState(
               initialValue: SampleObject(''),
@@ -769,15 +780,15 @@ void main() {
           FormsSelectionFieldState<SampleObject>>(
         'forms single selection field item update item list',
         build: () => SampleFormsSingleSelectionFieldCubit(
-          initialValue: SampleObject(''),
+          initialValue: const SampleObject(''),
         ),
-        act: (bloc) =>
-            bloc.updateItemList([SampleObject('c'), SampleObject('d')]),
+        act: (bloc) => bloc
+            .updateItemList([const SampleObject('c'), const SampleObject('d')]),
         expect: () => [
-          FormsSelectionFieldState<SampleObject>(
+          const FormsSelectionFieldState<SampleObject>(
             itemState: FormsFieldItemState(itemList: [
-              const SampleObject('c'),
-              const SampleObject('d'),
+              SampleObject('c'),
+              SampleObject('d'),
             ]),
             valueState: FormsFieldValueState(
               initialValue: SampleObject(''),
@@ -814,9 +825,9 @@ class SampleFormsSingleSelectionFieldCubit
   SampleFormsSingleSelectionFieldCubit({
     super.initialValue = const SampleObject(''),
     super.itemList = const [
-      const SampleObject(''),
-      const SampleObject('a'),
-      const SampleObject('b'),
+      SampleObject(''),
+      SampleObject('a'),
+      SampleObject('b'),
     ],
     super.validation,
   });

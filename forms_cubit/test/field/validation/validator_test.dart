@@ -124,4 +124,20 @@ void main() {
       );
     },
   );
+
+  group(
+    'validator cancel validate',
+    () {
+      test(
+        'cancel validate',
+        () async {
+          final validator =
+              FormsFieldRequiredValidator<Object?>(triggerTypeList: []);
+          validator.validate(null);
+          await validator.cancel();
+          expect(validator.validateOperation?.isCanceled, true);
+        },
+      );
+    },
+  );
 }

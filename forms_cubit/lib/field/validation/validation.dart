@@ -1,12 +1,15 @@
 import 'dart:async';
 
+import 'package:async/async.dart';
+
 import '../model/field_exception.dart';
 
 part 'validator.dart';
 
 class FormsFieldValidation<T> {
-  FormsFieldValidation({List<FormsFieldValidator<T>> validatorList = const []})
-      : _validatorList = validatorList;
+  FormsFieldValidation({
+    final List<FormsFieldValidator<T>> validatorList = const [],
+  }) : _validatorList = validatorList;
 
   final List<FormsFieldValidator<T>> _validatorList;
 
@@ -30,12 +33,17 @@ class FormsFieldValidation<T> {
     _validatorList.addAll(validatorList);
   }
 
-  void insertValidator(int index, FormsFieldValidator<T> validator) {
+  void insertValidator(
+    int index,
+    FormsFieldValidator<T> validator,
+  ) {
     _validatorList.insert(index, validator);
   }
 
   void insertValidatorList(
-      int index, Iterable<FormsFieldValidator<T>> validatorList) {
+    int index,
+    Iterable<FormsFieldValidator<T>> validatorList,
+  ) {
     _validatorList.insertAll(index, validatorList);
   }
 
@@ -47,18 +55,24 @@ class FormsFieldValidation<T> {
 
   void removeValidator(FormsFieldValidator<T> validator) {
     _validatorList.remove(validator);
+    validator.cancel();
   }
 
-  FutureOr<void> validate(T value,
-      {FormsFieldValidatorTriggerType? triggerType}) async {
+  FutureOr<void> validate(
+    T value, {
+    FormsFieldValidatorTriggerType? triggerType,
+  }) async {
     for (final validator in _validatorList) {
       if (triggerType != null &&
           !validator.triggerTypeList.contains(triggerType)) continue;
+      await validator.cancel();
       await validator.validate(value);
     }
   }
 
   void reset() {
-    _validatorList.forEach((validator) => validator.reset());
+    for (var validator in _validatorList) {
+      validator.reset();
+    }
   }
 }

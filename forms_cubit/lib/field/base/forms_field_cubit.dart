@@ -24,16 +24,13 @@ abstract class FormsFieldCubitBase<T, State extends FormsFieldState<T>>
 
   final FormsFieldValidation<T> _validation;
 
-  bool get isInitial =>
-      state.valueState.status == FormsFieldValueStatus.initial;
+  bool get isInitial => state.valueState.isInitial;
 
-  /// Easy getter function for checking current state is validating
-  bool get isValidating =>
-      state.validationState.status == FormsFieldValidationStatus.validating;
+  bool get isValidating => state.validationState.isValidating;
 
   bool get isValid => state.validationState.isValid;
 
-  bool isInitialValue(T value) => initialValue == value;
+  bool isInitialValue(T value) => state.valueState.isInitialValue(value);
 
   bool isValue(T value) => this.value == value;
 
@@ -75,7 +72,7 @@ abstract class FormsFieldCubit<T>
   }) : super(FormsFieldState<T>(
           valueState: FormsFieldValueState(
               initialValue: initialValue, value: initialValue),
-          validationState: FormsFieldValidationState(
+          validationState: const FormsFieldValidationState(
               status: FormsFieldValidationStatus.initial),
         ));
 
@@ -99,7 +96,7 @@ abstract class FormsSelectionFieldCubit<T>
           itemState: FormsFieldItemState(itemList: itemList),
           valueState: FormsFieldValueState(
               initialValue: initialValue, value: initialValue),
-          validationState: FormsFieldValidationState(
+          validationState: const FormsFieldValidationState(
               status: FormsFieldValidationStatus.initial),
         ));
 
@@ -150,7 +147,7 @@ abstract class FormsSingleSelectionFieldCubit<T>
     }
 
     if (!containItem(value)) {
-      throw FormsSelectionFieldNotInItemListException();
+      throw const FormsSelectionFieldNotInItemListException();
     }
 
     emit(state.copyWith(valueState: state.valueState.copyWith(value: value)));
@@ -176,7 +173,7 @@ abstract class FormsMultipleSelectionFieldCubit<T>
   }
 
   void selectValueList(Iterable<T> valueList) {
-    final resultList = this.value.toList();
+    final resultList = value.toList();
     for (final value in valueList) {
       if (resultList.contains(value)) continue;
 
@@ -198,7 +195,7 @@ abstract class FormsMultipleSelectionFieldCubit<T>
   }
 
   void unselectValueList(Iterable<T> valueList) {
-    final resultList = this.value.toList();
+    final resultList = value.toList();
     for (final value in valueList) {
       resultList.remove(value);
     }
