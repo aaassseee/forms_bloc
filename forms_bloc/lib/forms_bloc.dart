@@ -1,4 +1,4 @@
-library forms_cubit;
+library forms_bloc;
 
 export 'field/base/forms_field_cubit.dart';
 export 'field/dropdown_forms_field_cubit.dart';

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:equatable/equatable.dart';
-import 'package:forms_cubit/forms_bloc.dart';
+import 'package:forms_bloc/forms_bloc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 

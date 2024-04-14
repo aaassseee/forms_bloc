@@ -1,4 +1,4 @@
-import 'package:forms_cubit/field/model/field_exception.dart';
+import 'package:forms_bloc/field/model/field_exception.dart';
 import 'package:mockito/mockito.dart';
 
 class FakeFormsFieldValidationException extends Fake

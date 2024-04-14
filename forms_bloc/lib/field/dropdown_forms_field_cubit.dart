@@ -1,4 +1,4 @@
-import 'package:forms_cubit/field/base/forms_field_cubit.dart';
+import 'package:forms_bloc/field/base/forms_field_cubit.dart';
 
 class DropdownFormsFieldCubit<T> extends FormsSingleSelectionFieldCubit<T> {
   DropdownFormsFieldCubit({
